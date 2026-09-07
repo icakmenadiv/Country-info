@@ -2,15 +2,20 @@
   "scope": "OCIS Europe + Central Asia",
   "execution": "manual/on-demand",
   "default_items_per_run": 5,
-  "country_selection": "for each country, find its oldest known ocis_updated_at; recommend the country with the oldest date",
-  "item_selection": "within the selected country, sort by ocis_updated_at ascending and recommend up to 5 items",
-  "missing_date_rule": "items without ocis_updated_at are shown as date-unknown and excluded from automatic ranking",
-  "stored_fields": ["country_code","country_name","region","ntnCd","tocCd","title","ocis_updated_at","page_url"],
+  "country_selection": "among countries with verified current OCIS structure, find the oldest known ocis_updated_at among active items and recommend the country with the oldest date",
+  "item_selection": "within the selected country, use active items only, sort by ocis_updated_at ascending and recommend up to 5 items",
+  "structure_rule": "current OCIS independent-operation status takes precedence over historical Excel item granularity",
+  "status_values": ["active", "merged", "retired", "unknown"],
+  "merged_rule": "historical descendants of a verified active title are treated as merged into that active parent and excluded from automatic ranking",
+  "unknown_rule": "countries or items whose current OCIS structure is not verified are excluded from automatic ranking and shown as structure-check-needed",
+  "missing_date_rule": "active items without ocis_updated_at are shown as date-unknown and excluded from automatic ranking",
+  "stored_fields": ["country_code","country_name","region","ntnCd","tocCd","title","ocis_updated_at","page_url","structure_status","merged_into"],
   "rules": [
     "Do not store or require OCIS body text.",
     "Do not store current values or replacement proposals.",
     "Do not classify UPDATE/KEEP/REVIEW in this dashboard.",
-    "Recommendation ranking is based only on OCIS displayed update date.",
+    "Before ranking, apply data/structure.json and keep active items only.",
+    "Historical merged or retired items must not affect recommendation priority even if their dates are older.",
     "When the user asks for actual latest-information research after a recommendation, perform that as a separate task and show sources."
   ]
 }
