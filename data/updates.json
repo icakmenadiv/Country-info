@@ -1,0 +1,18 @@
+{
+  "snapshot_at": null,
+  "source": "OCIS 국별환경",
+  "source_url": "https://ocis.go.kr/",
+  "selection_basis": "ocis_updated_at only",
+  "items": [],
+  "schema": {
+    "country_code": "ISO-like internal country code used by this repository",
+    "country_name": "OCIS Korean country name",
+    "region": "Europe or Central Asia",
+    "ntnCd": "OCIS country code when known",
+    "tocCd": "OCIS item/content code when known",
+    "title": "OCIS item title",
+    "ocis_updated_at": "YYYY-MM-DD; OCIS displayed update date",
+    "page_url": "OCIS item URL when known"
+  },
+  "note": "No OCIS body text or current values are stored. Recommendations are calculated only from OCIS update-date metadata."
+}
