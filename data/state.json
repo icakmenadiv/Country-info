@@ -1,0 +1,15 @@
+{
+  "generated_at": null,
+  "scope_label": "Europe & Central Asia",
+  "countries": [
+    {"code":"UZB","name_ko":"우즈베키스탄","region":"Central Asia","enabled":true,"last_country_check":null,"pending_count":0},
+    {"code":"KAZ","name_ko":"카자흐스탄","region":"Central Asia","enabled":true,"last_country_check":null,"pending_count":0},
+    {"code":"KGZ","name_ko":"키르기스스탄","region":"Central Asia","enabled":true,"last_country_check":null,"pending_count":0},
+    {"code":"TJK","name_ko":"타지키스탄","region":"Central Asia","enabled":true,"last_country_check":null,"pending_count":0},
+    {"code":"TKM","name_ko":"투르크메니스탄","region":"Central Asia","enabled":true,"last_country_check":null,"pending_count":0},
+    {"code":"POL","name_ko":"폴란드","region":"Europe","enabled":true,"last_country_check":null,"pending_count":0},
+    {"code":"ROU","name_ko":"루마니아","region":"Europe","enabled":true,"last_country_check":null,"pending_count":0},
+    {"code":"UKR","name_ko":"우크라이나","region":"Europe","enabled":true,"last_country_check":null,"pending_count":0}
+  ],
+  "note": "PoC seed only. Add the remaining OCIS Europe countries after the country list is imported from OCIS."
+}
