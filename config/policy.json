@@ -1,23 +1,16 @@
 {
   "scope": "OCIS Europe + Central Asia",
-  "execution": "manual",
+  "execution": "manual/on-demand",
   "default_items_per_run": 5,
-  "country_selection": "oldest last_country_check among enabled countries",
-  "item_selection": "oldest last_verified first; exclude unresolved PENDING proposals",
-  "statuses": ["NEEDS_IMPORT", "OLD", "PENDING", "VERIFIED", "REVIEW"],
-  "decision_labels": ["UPDATE", "KEEP", "REVIEW"],
-  "source_priority": [
-    "government/law/statistics/central bank/procuring authority",
-    "World Bank/IMF/EBRD/ADB/AIIB/OECD/EU and other IFIs",
-    "KOTRA/embassy/reputable professional institutions",
-    "reputable local media only when primary sources are unavailable"
-  ],
+  "country_selection": "for each country, find its oldest known ocis_updated_at; recommend the country with the oldest date",
+  "item_selection": "within the selected country, sort by ocis_updated_at ascending and recommend up to 5 items",
+  "missing_date_rule": "items without ocis_updated_at are shown as date-unknown and excluded from automatic ranking",
+  "stored_fields": ["country_code","country_name","region","ntnCd","tocCd","title","ocis_updated_at","page_url"],
   "rules": [
-    "Always show source name, publication or reference date, and original URL.",
-    "For laws, tax, licenses, registrations, and official statistics, do not update from media-only evidence when an official source should exist.",
-    "Preserve the wording style, unit, date notation, and compactness of the existing OCIS value when proposing a replacement.",
-    "Do not overwrite current OCIS values automatically; store proposals separately.",
-    "If newer authoritative evidence is not found, mark KEEP or REVIEW rather than forcing an update.",
-    "Keep retrieved evidence concise to minimize LLM token use; normally use no more than two sources per item."
+    "Do not store or require OCIS body text.",
+    "Do not store current values or replacement proposals.",
+    "Do not classify UPDATE/KEEP/REVIEW in this dashboard.",
+    "Recommendation ranking is based only on OCIS displayed update date.",
+    "When the user asks for actual latest-information research after a recommendation, perform that as a separate task and show sources."
   ]
 }
