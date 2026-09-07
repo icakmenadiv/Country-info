@@ -68,7 +68,7 @@ function renderDetail(){
 function expandCatalog(catalog){
   const titles=catalog.titles||[];
   return Object.entries(catalog.countries||{}).flatMap(([code,dates])=>
-    titles.map((title,i)=>dates[i]===undefined?null:{country_code:code,title,ocis_updated_at:dates[i],page_url:null}).filter(Boolean)
+    titles.map((title,i)=>dates[i]==null?null:{country_code:code,title,ocis_updated_at:dates[i],page_url:null}).filter(Boolean)
   );
 }
 async function init(){
