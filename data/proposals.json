@@ -1,0 +1,15 @@
+{
+  "proposals": [],
+  "schema": {
+    "proposal_id": "string",
+    "item_id": "string",
+    "country": "ISO3",
+    "decision": "UPDATE|KEEP|REVIEW",
+    "old_value": "string",
+    "proposed_value": "string",
+    "checked_at": "YYYY-MM-DD",
+    "sources": [{"name":"string","date":"YYYY-MM-DD or reference period","url":"https://..."}],
+    "status": "PENDING|VERIFIED|REVIEW|APPLIED",
+    "note": "string"
+  }
+}
