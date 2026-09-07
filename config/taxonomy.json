@@ -1,0 +1,25 @@
+{
+  "version":"poc-2026-09-07",
+  "description":"Compact PoC taxonomy aligned to OCIS country-environment sections. Replace/expand item labels during exact OCIS import.",
+  "items":[
+    {"code":"GEN-OVR","category":"일반현황","item_name":"국가개황"},
+    {"code":"GEN-POL","category":"일반현황","item_name":"정치"},
+    {"code":"GEN-ECO","category":"일반현황","item_name":"경제"},
+    {"code":"GEN-KOR","category":"일반현황","item_name":"우리나라와의 관계"},
+    {"code":"CON-OVR","category":"건설시장현황","item_name":"건설시장개요"},
+    {"code":"CON-SYS","category":"건설시장현황","item_name":"건설업제도"},
+    {"code":"CON-IND","category":"건설시장현황","item_name":"건설산업현황"},
+    {"code":"CON-ORG","category":"건설시장현황","item_name":"공사 발주기관"},
+    {"code":"ENT-INV","category":"외국기업 진출환경","item_name":"투자환경"},
+    {"code":"ENT-TAX","category":"외국기업 진출환경","item_name":"조세제도"},
+    {"code":"ENT-FIN","category":"외국기업 진출환경","item_name":"금융"},
+    {"code":"ENT-INS","category":"외국기업 진출환경","item_name":"보험"},
+    {"code":"ENT-LAB","category":"외국기업 진출환경","item_name":"노동·고용"},
+    {"code":"ENT-IMM","category":"외국기업 진출환경","item_name":"출입국관리"},
+    {"code":"KOR-STA","category":"우리나라 진출현황","item_name":"진출현황"},
+    {"code":"KOR-COO","category":"우리나라 진출현황","item_name":"건설협력"},
+    {"code":"KOR-BRA","category":"우리나라 진출현황","item_name":"지사·법인"},
+    {"code":"OUT-PRP","category":"진출전망","item_name":"진출전망"}
+  ],
+  "note":"These are PoC grouping labels, not a claim that they reproduce every live OCIS sub-item exactly. Exact labels and current text are imported from OCIS before production use."
+}
