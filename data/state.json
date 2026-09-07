@@ -1,22 +1,20 @@
 {
   "generated_at": "2026-09-07",
-  "scope_label": "OCIS Europe + Central Asia PoC",
+  "scope_label": "OCIS Europe + Central Asia",
   "country_count": 13,
-  "selection_rule": "oldest last_country_check among enabled countries",
   "countries": [
-    {"code":"UZB","name_ko":"우즈베키스탄","name_en":"Uzbekistan","region":"Central Asia","ocis_region":"Asia","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/UZB.json"},
-    {"code":"KAZ","name_ko":"카자흐스탄","name_en":"Kazakhstan","region":"Central Asia","ocis_region":"Asia","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/KAZ.json"},
-    {"code":"KGZ","name_ko":"키르기스스탄","name_en":"Kyrgyzstan","region":"Central Asia","ocis_region":"Asia","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/KGZ.json"},
-    {"code":"TJK","name_ko":"타지키스탄","name_en":"Tajikistan","region":"Central Asia","ocis_region":"Asia","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/TJK.json"},
-    {"code":"TKM","name_ko":"투르크메니스탄","name_en":"Turkmenistan","region":"Central Asia","ocis_region":"Asia","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/TKM.json"},
-    {"code":"RUS","name_ko":"러시아","name_en":"Russia","region":"Europe","ocis_region":"Europe","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/RUS.json"},
-    {"code":"ROU","name_ko":"루마니아","name_en":"Romania","region":"Europe","ocis_region":"Europe","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/ROU.json"},
-    {"code":"GBR","name_ko":"영국","name_en":"United Kingdom","region":"Europe","ocis_region":"Europe","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/GBR.json"},
-    {"code":"UKR","name_ko":"우크라이나","name_en":"Ukraine","region":"Europe","ocis_region":"Europe","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/UKR.json"},
-    {"code":"GEO","name_ko":"조지아","name_en":"Georgia","region":"Europe","ocis_region":"Europe","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/GEO.json"},
-    {"code":"CZE","name_ko":"체코","name_en":"Czech Republic","region":"Europe","ocis_region":"Europe","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/CZE.json"},
-    {"code":"POL","name_ko":"폴란드","name_en":"Poland","region":"Europe","ocis_region":"Europe","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/POL.json"},
-    {"code":"HUN","name_ko":"헝가리","name_en":"Hungary","region":"Europe","ocis_region":"Europe","enabled":true,"last_country_check":null,"pending_count":0,"verified_count":0,"needs_import_count":18,"data_path":"data/countries/HUN.json"}
-  ],
-  "scope_note": "PoC scope uses the 8 Europe countries in retrievable OCIS reference material plus the 5 standard Central Asian countries listed under OCIS Asia. Live OCIS remains the source of truth for current country availability."
+    {"code":"UZB","name_ko":"우즈베키스탄","name_en":"Uzbekistan","region":"Central Asia","ocis_region":"Asia","enabled":true},
+    {"code":"KAZ","name_ko":"카자흐스탄","name_en":"Kazakhstan","region":"Central Asia","ocis_region":"Asia","enabled":true},
+    {"code":"KGZ","name_ko":"키르기스스탄","name_en":"Kyrgyzstan","region":"Central Asia","ocis_region":"Asia","enabled":true},
+    {"code":"TJK","name_ko":"타지키스탄","name_en":"Tajikistan","region":"Central Asia","ocis_region":"Asia","enabled":true},
+    {"code":"TKM","name_ko":"투르크메니스탄","name_en":"Turkmenistan","region":"Central Asia","ocis_region":"Asia","enabled":true},
+    {"code":"RUS","name_ko":"러시아","name_en":"Russia","region":"Europe","ocis_region":"Europe","enabled":true},
+    {"code":"ROU","name_ko":"루마니아","name_en":"Romania","region":"Europe","ocis_region":"Europe","enabled":true},
+    {"code":"GBR","name_ko":"영국","name_en":"United Kingdom","region":"Europe","ocis_region":"Europe","enabled":true},
+    {"code":"UKR","name_ko":"우크라이나","name_en":"Ukraine","region":"Europe","ocis_region":"Europe","enabled":true},
+    {"code":"GEO","name_ko":"조지아","name_en":"Georgia","region":"Europe","ocis_region":"Europe","enabled":true},
+    {"code":"CZE","name_ko":"체코","name_en":"Czech Republic","region":"Europe","ocis_region":"Europe","enabled":true},
+    {"code":"POL","name_ko":"폴란드","name_en":"Poland","region":"Europe","ocis_region":"Europe","enabled":true},
+    {"code":"HUN","name_ko":"헝가리","name_en":"Hungary","region":"Europe","ocis_region":"Europe","enabled":true}
+  ]
 }
