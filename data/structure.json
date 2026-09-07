@@ -1,0 +1,45 @@
+{
+  "verified_at": "2026-09-07",
+  "source": "OCIS current navigation structure verified via browser",
+  "status_values": ["active", "merged", "retired", "unknown"],
+  "rule": "Only exact active_titles are independently operated OCIS items. Historical descendants of an active title are treated as merged into that active parent. Items not covered by a verified country structure remain unknown and are excluded from automatic recommendations.",
+  "countries": {
+    "UZB": {
+      "verified": true,
+      "ntnCd": "299",
+      "verified_at": "2026-09-07",
+      "active_titles": [
+        "일반현황 > 국가개황",
+        "일반현황 > 정치",
+        "일반현황 > 경제",
+        "일반현황 > 우리나라와의 관계",
+        "건설시장현황 > 건설시장개요",
+        "건설시장현황 > 인프라 건설시장",
+        "건설시장현황 > 플랜트 건설시장",
+        "건설시장현황 > 건설업 제도",
+        "건설시장현황 > 현지 및 외국업체 현황",
+        "건설시장현황 > 공사 발주기관",
+        "공사 관련 제도 > 투자환경",
+        "공사 관련 제도 > 조세제도",
+        "공사 관련 제도 > 금융",
+        "공사 관련 제도 > 보험",
+        "공사 관련 제도 > 노동/고용",
+        "공사 관련 제도 > 출입국관리",
+        "공사수행환경 > 자연환경",
+        "공사수행환경 > 운송/통신",
+        "공사수행환경 > 현장가설환경",
+        "공사수행환경 > 기자재조달환경",
+        "공사수행환경 > 환경규제",
+        "우리나라 진출현황 > 진출현황",
+        "우리나라 진출현황 > 건설협력",
+        "우리나라 진출현황 > 지사/법인",
+        "진출전망 > 진출전망"
+      ],
+      "retired_titles": [],
+      "notes": [
+        "Current OCIS navigation exposes only the listed independent items.",
+        "Example: 일반현황 > 경제 > 주요경제지표 / 최근 경제동향 / 경제개발계획 are historical sub-items now merged into 일반현황 > 경제."
+      ]
+    }
+  }
+}
