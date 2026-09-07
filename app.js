@@ -1,0 +1,27 @@
+const $ = s => document.querySelector(s);
+const state = {countries:[],items:[],proposals:[],selected:null};
+
+async function loadJSON(path){const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw new Error(path);return r.json()}
+function fmtDate(v){return v||'미점검'}
+function ageKey(v){return v?new Date(v).getTime():0}
+function statusRank(s){return {PENDING:0,REVIEW:1,NEEDS_IMPORT:2,OLD:3,VERIFIED:4}[s]??9}
+function getCountryItems(code){return state.items.filter(x=>x.country===code)}
+function getPending(code){return state.proposals.filter(x=>x.country===code&&x.status==='PENDING')}
+function getOldestItems(code,n=5){return getCountryItems(code).filter(x=>x.status!=='PENDING').sort((a,b)=>ageKey(a.last_verified)-ageKey(b.last_verified)||statusRank(a.status)-statusRank(b.status)).slice(0,n)}
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)}
+async function copyText(t){try{await navigator.clipboard.writeText(t);toast('명령어를 복사했습니다.')}catch{toast(t)}}
+
+function renderSummary(){
+  const enabled=state.countries.filter(c=>c.enabled);
+  const pending=state.proposals.filter(p=>p.status==='PENDING').length;
+  const needs=state.items.filter(i=>['OLD','NEEDS_IMPORT','REVIEW'].includes(i.status)).length;
+  const verified=state.items.filter(i=>i.status==='VERIFIED').length;
+  $('#summary').innerHTML=[['대상 국가',enabled.length+'개'],['갱신 필요 항목',needs+'개'],['검토 대기',pending+'개'],['최신 검증 완료',verified+'개']].map(([k,v])=>`<div class="metric"><span>${k}</span><strong>${v}</strong></div>`).join('');
+}
+function nextCountry(){return state.countries.filter(c=>c.enabled).sort((a,b)=>ageKey(a.last_country_check)-ageKey(b.last_country_check)||a.name_ko.localeCompare(b.name_ko,'ko'))[0]}
+function renderNext(){const c=nextCountry();if(!c){$('#nextTarget').innerHTML='<div class="empty">대상 국가가 없습니다.</div>';return}const items=getOldestItems(c.code,5);$('#nextTarget').innerHTML=`<div class="next-country"><span>NEXT COUNTRY</span><strong>${c.name_ko}</strong><span>마지막 점검: ${fmtDate(c.last_country_check)}</span></div><div><div class="target-items">${items.length?items.map((x,i)=>`<span class="target-chip">${i+1}. ${x.item_name}</span>`).join(''):'<span class="target-chip">OCIS 항목 import 필요</span>'}</div></div>`}
+function renderCountries(){const region=$('#regionFilter').value,q=$('#countrySearch').value.trim().toLowerCase();const list=state.countries.filter(c=>c.enabled&&(region==='ALL'||c.region===region)&&(!q||c.name_ko.toLowerCase().includes(q)||c.code.toLowerCase().includes(q)));$('#countryGrid').innerHTML=list.map(c=>{const items=getCountryItems(c.code),needs=items.filter(i=>['OLD','NEEDS_IMPORT','REVIEW'].includes(i.status)).length,pending=getPending(c.code).length;return `<button class="country-card ${state.selected===c.code?'active':''}" data-code="${c.code}"><span class="region">${c.region}</span><h3>${c.name_ko}</h3><div class="card-stat"><span>마지막 점검</span><b>${fmtDate(c.last_country_check)}</b></div><div class="card-stat"><span>갱신 필요</span><b>${needs}</b></div><div class="card-stat"><span>제안 대기</span><b>${pending}</b></div></button>`}).join('')||'<div class="empty">검색 결과가 없습니다.</div>';document.querySelectorAll('.country-card').forEach(b=>b.onclick=()=>{state.selected=b.dataset.code;renderCountries();renderDetail();})}
+function renderDetail(){const c=state.countries.find(x=>x.code===state.selected);if(!c){$('#detailTitle').textContent='국가 상세';$('#detailSub').textContent='국가를 선택하세요.';$('#itemTable').innerHTML='<tr><td colspan="6"><div class="empty">표시할 국가를 선택하세요.</div></td></tr>';return}const items=getCountryItems(c.code).sort((a,b)=>ageKey(a.last_verified)-ageKey(b.last_verified));$('#detailTitle').textContent=c.name_ko;$('#detailSub').textContent=`${c.region} · 오래된 순 정렬 · 기본 조사 대상 ${Math.min(5,items.length)}개`;$('#itemTable').innerHTML=items.length?items.map(x=>`<tr><td><span class="status ${x.status}">${x.status}</span></td><td>${x.category}</td><td><b>${x.item_name}</b></td><td>${x.current_value||'<span style="color:#7c3aed">OCIS 값 import 필요</span>'}</td><td>${x.data_as_of||'-'}</td><td>${fmtDate(x.last_verified)}</td></tr>`).join(''):'<tr><td colspan="6"><div class="empty">아직 import된 항목이 없습니다.</div></td></tr>'}
+function renderProposals(){const ps=[...state.proposals].reverse();$('#proposalList').innerHTML=ps.length?ps.map(p=>`<article class="proposal"><div class="proposal-top"><h3>${p.country} · ${p.item_id} · ${p.decision}</h3><span class="status ${p.status==='PENDING'?'PENDING':p.status==='REVIEW'?'REVIEW':'VERIFIED'}">${p.status}</span></div><p>${p.proposed_value||p.note||'제안 내용 없음'}</p></article>`).join(''):'<div class="empty">아직 저장된 업데이트 제안이 없습니다. ChatGPT에서 “국별환경 업데이트 실행”을 요청하면 여기에 누적됩니다.</div>'}
+async function init(){try{const [s,i,p]=await Promise.all([loadJSON('data/state.json'),loadJSON('data/items.json'),loadJSON('data/proposals.json')]);state.countries=s.countries||[];state.items=i.items||[];state.proposals=p.proposals||[];state.selected=nextCountry()?.code||null;renderSummary();renderNext();renderCountries();renderDetail();renderProposals();}catch(e){document.body.innerHTML='<main class="wrap"><div class="panel"><h2>데이터를 불러오지 못했습니다.</h2><p>GitHub Pages 또는 로컬 웹서버에서 열어주세요.</p></div></main>'}}
+$('#regionFilter').addEventListener('change',renderCountries);$('#countrySearch').addEventListener('input',renderCountries);$('#copyRun').onclick=()=>copyText('국별환경 업데이트 실행');$('#copyPending').onclick=()=>copyText('미반영 업데이트 보여줘');init();
