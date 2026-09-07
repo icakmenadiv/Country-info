@@ -32,7 +32,7 @@ function renderSummary(){
 function renderNext(){
   const c=nextCountry();
   if(!c){
-    $('#nextTarget').innerHTML='<div class="empty">아직 OCIS 수정일 메타데이터가 없습니다. data/updates.json에 메타데이터가 들어오면 자동 추천됩니다.</div>';
+    $('#nextTarget').innerHTML='<div class="empty">아직 OCIS 수정일 메타데이터가 없습니다.</div>';
     return;
   }
   const items=rankedCountryItems(c.code).slice(0,5);
@@ -65,10 +65,18 @@ function renderDetail(){
   const unknownRows=unknown.map(x=>`<tr><td>-</td><td>${x.title||'-'}</td><td>날짜 미확인</td><td>${x.page_url?`<a href="${x.page_url}" target="_blank" rel="noreferrer">열기 ↗</a>`:'-'}</td></tr>`).join('');
   $('#itemTable').innerHTML=(datedRows+unknownRows)||'<tr><td colspan="4"><div class="empty">아직 이 국가의 수정일 메타데이터가 없습니다.</div></td></tr>';
 }
+function expandCatalog(catalog){
+  const titles=catalog.titles||[];
+  return Object.entries(catalog.countries||{}).flatMap(([code,dates])=>
+    titles.map((title,i)=>dates[i]===undefined?null:{country_code:code,title,ocis_updated_at:dates[i],page_url:null}).filter(Boolean)
+  );
+}
 async function init(){
   try{
-    const [s,u]=await Promise.all([loadJSON('data/state.json'),loadJSON('data/updates.json',{items:[]})]);
-    state.countries=s.countries||[];state.updates=u.items||[];state.snapshotAt=u.snapshot_at||null;
+    const [s,catalog]=await Promise.all([loadJSON('data/state.json'),loadJSON('data/catalog.json')]);
+    state.countries=s.countries||[];
+    state.updates=expandCatalog(catalog);
+    state.snapshotAt=catalog.snapshot_at||null;
     state.selected=nextCountry()?.code||state.countries.find(c=>c.enabled)?.code||null;
     renderSummary();renderNext();renderCountries();renderDetail();
   }catch(e){document.body.innerHTML='<main class="wrap"><div class="panel"><h2>데이터를 불러오지 못했습니다.</h2><p>GitHub Pages 또는 로컬 웹서버에서 열어주세요.</p></div></main>'}
