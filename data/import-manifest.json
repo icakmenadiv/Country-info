@@ -1,0 +1,27 @@
+{
+  "imported_at": "2026-09-07",
+  "scope": "Europe + Central Asia PoC",
+  "countries": 13,
+  "taxonomy_units": 79,
+  "taxonomy_status": "IMPORTED",
+  "baseline_value_status": "PARTIAL_BLOCKED",
+  "source_of_truth": "https://ocis.go.kr/",
+  "notes": [
+    "OCIS live country pages do not currently return their full body reliably to the available external retrieval tools.",
+    "No current_value was fabricated or backfilled from secondary sources.",
+    "Detailed taxonomy was imported from published ICAK/MOLIT-related reference reports and must be reconciled with live OCIS labels when baseline text becomes retrievable.",
+    "Baseline values should remain NEEDS_IMPORT until copied from live OCIS or supplied through an export/file accessible to this workflow."
+  ],
+  "reference_sources": [
+    {
+      "name": "해외건설산업정보시스템 구축을 위한 연구용역",
+      "url": "https://www.codil.or.kr/filebank/original/RK/OTKCRK190688/OTKCRK190688.pdf?stream=T",
+      "use": "country-environment taxonomy/reference structure"
+    },
+    {
+      "name": "창조경제 실현을 위한 건축서비스산업의 해외시장 진출 지원 제도 개선 연구",
+      "url": "https://auri.re.kr/publicationFileDirect.es?bid=research&list_no=118&seq=1",
+      "use": "taxonomy cross-check"
+    }
+  ]
+}
