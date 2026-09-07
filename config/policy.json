@@ -1,0 +1,23 @@
+{
+  "scope": "OCIS Europe + Central Asia",
+  "execution": "manual",
+  "default_items_per_run": 5,
+  "country_selection": "oldest last_country_check among enabled countries",
+  "item_selection": "oldest last_verified first; exclude unresolved PENDING proposals",
+  "statuses": ["NEEDS_IMPORT", "OLD", "PENDING", "VERIFIED", "REVIEW"],
+  "decision_labels": ["UPDATE", "KEEP", "REVIEW"],
+  "source_priority": [
+    "government/law/statistics/central bank/procuring authority",
+    "World Bank/IMF/EBRD/ADB/AIIB/OECD/EU and other IFIs",
+    "KOTRA/embassy/reputable professional institutions",
+    "reputable local media only when primary sources are unavailable"
+  ],
+  "rules": [
+    "Always show source name, publication or reference date, and original URL.",
+    "For laws, tax, licenses, registrations, and official statistics, do not update from media-only evidence when an official source should exist.",
+    "Preserve the wording style, unit, date notation, and compactness of the existing OCIS value when proposing a replacement.",
+    "Do not overwrite current OCIS values automatically; store proposals separately.",
+    "If newer authoritative evidence is not found, mark KEEP or REVIEW rather than forcing an update.",
+    "Keep retrieved evidence concise to minimize LLM token use; normally use no more than two sources per item."
+  ]
+}
